@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fzayani <fzayani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:51:31 by fzayani           #+#    #+#             */
-/*   Updated: 2024/05/24 13:05:10 by fzayani          ###   ########.fr       */
+/*   Updated: 2025/01/03 11:50:11 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(void)
 	}
 	else
 	{
-		printf("Erreur lors de la conversion du nombre en chaîne de caractères.\n");
+		printf("Erreur lors de la conversion en chaîne de caractères.\n");
 	}
 	return (0);
 }*/
