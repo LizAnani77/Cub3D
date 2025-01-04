@@ -3,21 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 19:56:03 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/02 11:21:21 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:23:15 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
 
-// Cette fonction initialise toutes les valeurs nécessaires au démarrage du jeu
-// Elle place le joueur à sa position initiale avec un décalage
-//	de 0.5 pour centrer
-// Configure la direction initiale selon l'orientation du joueur
-// Définit les vitesses de mouvement et de rotation
-// Réinitialise tous les flags de mouvement à zéro
 void	init_player_pos(t_ray *ray, t_data *data)
 {
 	ray->pos_x = (double)data->player.pos_x + 0.5;
@@ -33,10 +27,6 @@ void	init_player_pos(t_ray *ray, t_data *data)
 	data->movement.rot_right = 0;
 }
 
-// Cette fonction gère le rendu d'une colonne verticale de l'écran
-// Elle dessine le ciel, le mur et le sol pour chaque colonne
-// Les couleurs sont définies selon les textures et les paramètres
-//	du fichier.cub
 void	draw_vertical_line(t_data *data, t_ray *ray, int x)
 {
 	int	y;
@@ -59,10 +49,6 @@ void	draw_vertical_line(t_data *data, t_ray *ray, int x)
 	}
 }
 
-// Cette fonction est la fonction principale du raycasting
-// Elle parcourt chaque colonne de l'écran de gauche à droite
-// Pour chaque colonne, elle initialise un rayon, calcule les intersections
-// 	et dessine la colonne correspondante
 void	raycasting(t_data *data)
 {
 	t_ray	ray;

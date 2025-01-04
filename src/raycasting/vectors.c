@@ -3,21 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   vectors.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 11:18:45 by lanani-f          #+#    #+#             */
-/*   Updated: 2025/01/02 11:46:52 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:23:35 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
 
-// Ces fonctions configurent les vecteurs de direction et le plan de la caméra
-// selon l'orientation initiale du joueur (N, S, E, W)
-// dir_x et dir_y forment le vecteur de direction du joueur
-// plane_x et plane_y forment le plan de la caméra perpendiculaire
-//	à la direction
-// Ces valeurs sont utilisées pour le calcul du raycasting
 static void	set_direction_ns(t_ray *ray, char dir)
 {
 	if (dir == 'N')

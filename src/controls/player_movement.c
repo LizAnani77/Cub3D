@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:33:49 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/02 11:59:05 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:19:39 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
 
-// Cette fonction gère le déplacement avant/arrière du joueur
-// Elle vérifie les collisions avec les murs avant d'effectuer le mouvement
-// La vitesse est ajustée en fonction du temps écoulé depuis la dernière frame
 static void	move_forward(t_data *data, double new_x, double new_y)
 {
 	if (data->map[(int)new_y][(int)data->player.pos_x] != '1')
@@ -46,9 +43,6 @@ void	handle_forward_movement(t_data *data)
 	}
 }
 
-// Cette fonction gère le déplacement latéral (strafe) du joueur
-// Utilise un vecteur perpendiculaire à la direction pour le mouvement
-// Inclut également la vérification des collisions
 static void	move_strafe(t_data *data, double new_x, double new_y)
 {
 	if (data->map[(int)new_y][(int)data->player.pos_x] != '1')
@@ -79,3 +73,5 @@ void	handle_strafe_movement(t_data *data)
 		move_strafe(data, new_x, new_y);
 	}
 }
+
+

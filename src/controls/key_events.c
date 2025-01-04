@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:05:11 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/02 11:12:25 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:19:09 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
 
-// Cette fonction gère l'appui des touches du clavier
-// Elle met à jour les flags de mouvement dans la structure t_movement
-// Les touches WASD contrôlent le déplacement, les flèches la rotation
 int	handle_keypress(int keycode, t_data *data)
 {
 	if (keycode == KEY_W)
@@ -34,9 +31,6 @@ int	handle_keypress(int keycode, t_data *data)
 	return (0);
 }
 
-// Cette fonction gère le relâchement des touches
-// Elle remet à zéro les flags de mouvement correspondants
-// Permet d'avoir un contrôle fluide du personnage
 int	handle_keyrelease(int keycode, t_data *data)
 {
 	if (keycode == KEY_W)
