@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:14:56 by fzayani           #+#    #+#             */
-/*   Updated: 2025/01/02 11:53:01 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/05 22:21:59 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define KEY_ESC 65307
+
+# define TILE_SIZE 8
+# define MINIMAP_SIZE 200
 
 typedef struct s_img
 {
@@ -130,6 +133,21 @@ typedef struct s_data
 	char		*ea_texture;
 	char		*no_texture;
 }				t_data;
+
+typedef struct s_minimap
+{
+	int			scale;
+	int			width;
+	int			height;
+	int			padding;
+	int			player_color;
+	int			player_size;
+	int			pos_x;
+	int			pos_y;
+	int			offset_x;
+	int			offset_y;
+}				t_minimap;
+
 
 /// parsing/parsing.c
 void			count_map_elements(t_data *data, int *exit_count,
@@ -233,5 +251,23 @@ void			handle_strafe_movement(t_data *data);
 
 void			handle_rotation(t_data *data);
 void			handle_rotation_left(t_data *data);
+
+// minimap/minimap.c
+
+void			init_minimap(t_data *data);
+void			put_minimap_pixel(t_data *data, int map_x, int map_y,
+					int color);
+void			draw_map_content(t_data *data);
+void			draw_minimap(t_data *data);
+
+// minimap/minimap_utils.c
+
+int				get_minimap_color(char map_char);
+int				is_in_minimap_bounds(t_minimap *minimap, int x, int y);
+void			clear_minimap(t_data *data, t_minimap *minimap);
+
+// minimap/minimap_player.c
+
+void			draw_player_on_map(t_data *data);
 
 #endif

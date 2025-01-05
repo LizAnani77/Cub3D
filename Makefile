@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+         #
+#    By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 13:08:55 by lanani-f          #+#    #+#              #
-#    Updated: 2025/01/02 14:23:09 by lanani-f         ###   ########.fr        #
+#    Updated: 2025/01/05 22:19:47 by lizzieanani      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ MAP_DIR             =   $(SRC_PATH)map
 RAYCASTING_DIR		=	$(SRC_PATH)raycasting
 CONTROLS_DIR		=	$(SRC_PATH)controls
 GAME_DIR			=	$(SRC_PATH)game
+MINIMAP_DIR			=	$(SRC_PATH)minimap
 
 
 SRCS_FILES  =   main.c \
@@ -44,7 +45,10 @@ SRCS_FILES  =   main.c \
 				init_ray.c \
 				perform_dda.c \
 				raycasting.c \
-				vectors.c
+				vectors.c \
+				minimap.c \
+				minimap_utils.c \
+				minimap_player.c 
 				
 SRCS        =   $(addprefix $(SRC_PATH), $(SRCS_FILES))
 

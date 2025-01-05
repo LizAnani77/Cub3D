@@ -6,7 +6,7 @@
 /*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:33:49 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/04 01:19:39 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/05 14:17:02 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,3 @@ void	handle_strafe_movement(t_data *data)
 		move_strafe(data, new_x, new_y);
 	}
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 19:51:36 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/04 01:21:38 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/05 21:57:49 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	perform_dda(t_ray *ray, t_data *data)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (data->map[ray->map_y][ray->map_x] == '1')
+		if (ray->map_x < 0 || ray->map_x >= data->map_width || ray->map_y < 0
+			|| ray->map_y >= data->map_height
+			|| data->map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
 }
