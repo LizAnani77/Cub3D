@@ -6,7 +6,7 @@
 /*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:37:46 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/06 18:38:06 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/06 18:58:43 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,27 @@ int	validate_textures(t_data *data)
 	return (0);
 }
 
+static void	adjust_tex_y(int *tex_y, int tex_height)
+{
+	if (*tex_y < 0)
+		*tex_y = 0;
+	if (*tex_y >= tex_height)
+		*tex_y = tex_height - 1;
+}
+
+static void	*select_texture(t_data *data, t_ray *ray)
+{
+	if (ray->side == 0)
+	{
+		if (ray->ray_dir_x > 0)
+			return (data->ea_texture);
+		return (data->we_texture);
+	}
+	if (ray->ray_dir_y > 0)
+		return (data->so_texture);
+	return (data->no_texture);
+}
+
 int	get_texture_color(t_data *data, t_ray *ray, int y)
 {
 	int		tex_x;
@@ -32,20 +53,12 @@ int	get_texture_color(t_data *data, t_ray *ray, int y)
 	int		tex_height;
 	double	step;
 
-	if (ray->side == 0 && ray->ray_dir_x > 0)
-		texture = data->ea_texture;
-	else if (ray->side == 0)
-		texture = data->we_texture;
-	else if (ray->ray_dir_y > 0)
-		texture = data->so_texture;
-	else
-		texture = data->no_texture;
+	texture = select_texture(data, ray);
 	tex_x = get_tex_x(texture, ray);
 	mlx_get_image_size(texture, NULL, &tex_height);
 	step = 1.0 * tex_height / ray->line_height;
 	tex_y = (int)((y - ray->draw_start) * step);
-	tex_y = tex_y < 0 ? 0 : tex_y;
-	tex_y = tex_y >= tex_height ? tex_height - 1 : tex_y;
+	adjust_tex_y(&tex_y, tex_height);
 	return (get_tex_color(texture, tex_x, tex_y));
 }
 
