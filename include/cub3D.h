@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
+/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:14:56 by fzayani           #+#    #+#             */
-/*   Updated: 2025/01/06 18:45:37 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/08 15:06:59 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 
+
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_A 97
@@ -30,6 +31,8 @@
 # define KEY_D 100
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+
+# define MINIMAP_SIZE 200
 
 typedef struct s_img
 {
@@ -90,6 +93,24 @@ typedef struct s_movement
 	double		rot_speed;
 }				t_movement;
 
+typedef struct s_texture {
+    void    *img;
+    int     height;
+    int     width;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}				t_texture;
+
+typedef struct s_minimap {
+	double  scale;
+    int     width;
+    int     height;
+    int     offset_x;
+    int     offset_y;
+}               t_minimap;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -99,10 +120,14 @@ typedef struct s_data
 	char		*s_t;
 	char		*w_t;
 	char		*e_t;
-	void		*no_texture;
-	void		*so_texture;
-	void		*we_texture;
-	void		*ea_texture;
+	// void		*no_texture;
+	// void		*so_texture;
+	// void		*we_texture;
+	// void		*ea_texture;
+	t_texture	*no_texture;
+	t_texture	*so_texture;
+	t_texture	*we_texture;
+	t_texture	*ea_texture;
 	char		**map;
 	char		**copie_map;
 	int			map_width;
@@ -111,6 +136,7 @@ typedef struct s_data
 	int			c_color;
 	t_player	player;
 	t_movement	movement;
+	t_minimap   minimap;
 }				t_data;
 
 /* parsing_1.c */
@@ -136,17 +162,20 @@ int				is_valid_player_char(char c);
 int				validate_map(t_data *data);
 
 /* texture_handler.c */
-int				load_texture(t_data *data, void **texture, char *path);
+// int				load_texture(t_data *data, void **texture, char *path);
+int				load_texture(t_data *data, t_texture **texture, char *path);
 int				init_textures(t_data *data);
-int				get_tex_color(void *texture, int x, int y);
+// int				get_tex_color(void *texture, int x, int y);
+int				get_tex_color(t_texture *texture, int tex_x, int tex_y);
 int				get_wall_texture(t_data *data, t_ray *ray);
-int				get_tex_x(void *texture, t_ray *ray);
+// int				get_tex_x(void *texture, t_ray *ray);
+int				get_tex_x(t_texture *texture, t_ray *ray);
 
 /* game_init.c */
 void			init_window(t_data *data);
 void			init_image(t_data *data);
 int				init_game(t_data *data);
-void			exit_with_error(char *message, t_data *data);
+// void			exit_with_error(char *message, t_data *data);
 void			put_pixel(t_data *data, int x, int y, int color);
 
 /* game_loop.c */
@@ -184,15 +213,13 @@ void			handle_strafe_movement(t_data *data);
 void			handle_rotation(t_data *data);
 void			handle_rotation_left(t_data *data);
 
-/* utils */
-int				error_msg(char *msg);
-
 /* utils.c */
 int				error_msg(char *msg);
 void			free_split(char **split);
 int				get_max_line_length(char **map);
 int				check_xpm_extension(char *path);
-int				check_texture_size(void *texture1, void *texture2);
+// int				check_texture_size(void *texture1, void *texture2);
+int				check_texture_size(t_texture *texture1, t_texture *texture2);
 
 /* parse_map.c */
 int				parse_map(int fd, char *first_line, t_data *data);
@@ -207,21 +234,39 @@ void			*get_wall_texture_ptr(t_data *data, t_ray *ray);
 /* errors.c */
 void			error_mlx(char *message, t_data *data);
 void			error_malloc(char *message, t_data *data);
-void			error_texture(char *message, t_data *data);
+void			error_texture(char *message, t_data *data);	
 void			error_map(char *message, t_data *data);
 void			exit_with_error(char *message, t_data *data);
 
 /* free.c */
 void			free_texture_paths(t_data *data);
 void			free_textures(t_data *data);
+void			free_texture(t_data *data, t_texture **texture);
 void			free_map(t_data *data);
 void			free_mlx(t_data *data);
 void			free_resources(t_data *data);
 
 /* clean.c */
-void			free_resources(t_data *data);
-void			free_textures(t_data *data);
+// void			free_resources(t_data *data); //en attente de fusion
+void			free_textures_bis(t_data *data);
 void			free_map_array(char **map, int height);
 void			free_mlx_resources(t_data *data);
+
+/* minimap_player*/
+void			draw_player_on_map(t_data *data);
+
+/* minimap_utils */
+
+int				get_minimap_color(char map_char);
+int				is_in_minimap_bounds(t_minimap *minimap, int x, int y);
+void			clear_minimap(t_data *data, t_minimap *minimap);
+
+/* minimap.c */
+
+void			init_minimap(t_data *data);
+void			put_pixel_minimap(t_data *data, int x, int y, int color);
+void			put_minimap_pixel(t_data *data, int map_x, int map_y, int color);
+void			draw_map_content(t_data *data);
+void			draw_minimap(t_data *data);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
+/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:47:43 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/06 18:48:19 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/08 11:58:02 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ void	free_textures(t_data *data)
 	data->so_texture = NULL;
 	data->we_texture = NULL;
 	data->ea_texture = NULL;
+}
+
+// ajout
+void free_texture(t_data *data, t_texture **texture)
+{
+    if (*texture)
+    {
+        if ((*texture)->img)
+            mlx_destroy_image(data->mlx, (*texture)->img);
+        free(*texture);
+        *texture = NULL;
+    }
 }
 
 void	free_map(t_data *data)
@@ -82,6 +94,7 @@ void	free_resources(t_data *data)
 {
 	free_texture_paths(data);
 	free_textures(data);
+	// free_texture(data);
 	free_map(data);
 	free_mlx(data);
 }

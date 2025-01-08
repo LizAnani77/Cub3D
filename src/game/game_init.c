@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
+/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:14:08 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/06 17:16:47 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/08 15:06:10 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,6 @@ int	init_game(t_data *data)
 		return (1);
 	init_hooks(data);
 	return (0);
-}
-
-void	exit_with_error(char *message, t_data *data)
-{
-	if (message)
-		ft_putendl_fd(message, 2);
-	free_resources(data);
-	exit(1);
 }
 
 void	put_pixel(t_data *data, int x, int y, int color)

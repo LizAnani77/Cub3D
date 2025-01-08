@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
+/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:28:13 by lanani-f          #+#    #+#             */
-/*   Updated: 2025/01/05 22:13:03 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/08 12:00:57 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
 
-static void	free_texture(void *mlx, void *texture, char *path)
+static void	free_texture_bis(void *mlx, void *texture, char *path)
 {
 	if (texture)
 	{
@@ -26,12 +26,12 @@ static void	free_texture(void *mlx, void *texture, char *path)
 	}
 }
 
-void	free_textures(t_data *data)
+void	free_textures_bis(t_data *data)
 {
-	free_texture(data->mlx, data->no_texture, data->n_t);
-	free_texture(data->mlx, data->so_texture, data->s_t);
-	free_texture(data->mlx, data->we_texture, data->w_t);
-	free_texture(data->mlx, data->ea_texture, data->e_t);
+	free_texture_bis(data->mlx, data->no_texture, data->n_t);
+	free_texture_bis(data->mlx, data->so_texture, data->s_t);
+	free_texture_bis(data->mlx, data->we_texture, data->w_t);
+	free_texture_bis(data->mlx, data->ea_texture, data->e_t);
 }
 
 void	free_map_array(char **map, int height)
@@ -74,12 +74,12 @@ void	free_mlx_resources(t_data *data)
 	}
 }
 
-void	free_resources(t_data *data)
-{
-	free_map_array(data->map, data->map_height);
-	data->map = NULL;
-	free_map_array(data->copie_map, data->map_height);
-	data->copie_map = NULL;
-	free_textures(data);
-	free_mlx_resources(data);
-}
+// void	free_resources(t_data *data)
+// {
+// 	free_map_array(data->map, data->map_height);
+// 	data->map = NULL;
+// 	free_map_array(data->copie_map, data->map_height);
+// 	data->copie_map = NULL;
+// 	free_textures(data);
+// 	free_mlx_resources(data);
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
+/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:46:56 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/06 18:47:14 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/08 15:06:32 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

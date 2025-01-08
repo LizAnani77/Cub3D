@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+         #
+#    By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 13:08:55 by lanani-f          #+#    #+#              #
-#    Updated: 2025/01/06 18:50:53 by lizzieanani      ###   ########.fr        #
+#    Updated: 2025/01/08 10:52:32 by lanani-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,4 +106,4 @@ fclean: clean
 re: fclean all
 	@echo "$(BLUE_DARK)📚 $(NAME) recompiled!$(RESET)"
 
-.PHONY: all clean fclean rels
+.PHONY: all clean fclean re

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
+/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 10:00:00 by lanani-f          #+#    #+#             */
-/*   Updated: 2025/01/05 22:15:07 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/08 15:03:10 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_minimap(t_data *data)
 	data->minimap.offset_y = 10;
 }
 
-static void	put_pixel(t_data *data, int x, int y, int color)
+void	put_pixel_minimap(t_data *data, int x, int y, int color)
 {
 	if (y >= 0 && y < WINDOW_HEIGHT && x >= 0 && x < WINDOW_WIDTH)
 		data->img.addr[y * WINDOW_WIDTH + x] = color;
@@ -51,7 +51,7 @@ void	put_minimap_pixel(t_data *data, int map_x, int map_y, int color)
 					+ i);
 			screen_y = data->minimap.offset_y + (map_y * data->minimap.scale
 					+ j);
-			put_pixel(data, screen_x, screen_y, color);
+			put_pixel_minimap(data, screen_x, screen_y, color);
 			j++;
 		}
 		i++;
