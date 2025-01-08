@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap_utils.c                                    :+:      :+:    :+:   */
+/*   minimap_utils 2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 01:10:53 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/08 14:57:04 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/08 22:47:14 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,25 @@ int	is_in_minimap_bounds(t_minimap *minimap, int x, int y)
 	return (1);
 }
 
-void clear_minimap(t_data *data, t_minimap *minimap)
+void	clear_minimap(t_data *data, t_minimap *minimap)
 {
-    int i;
-    int j;
-    int x;
-    int y;
+	int	i;
+	int	j;
+	int	x;
+	int	y;
 
-    i = 0;
-    while (i < minimap->height)
-    {
-        j = 0;
-        while (j < minimap->width)
-        {
-            x = j + minimap->offset_x;
-            y = i + minimap->offset_y;
-            if (x >= 0 && x < WINDOW_WIDTH && y >= 0 && y < WINDOW_HEIGHT)
-                data->img.addr[y * WINDOW_WIDTH + x] = 0x000000;
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	while (i < minimap->height)
+	{
+		j = 0;
+		while (j < minimap->width)
+		{
+			x = j + minimap->offset_x;
+			y = i + minimap->offset_y;
+			if (x >= 0 && x < WINDOW_WIDTH && y >= 0 && y < WINDOW_HEIGHT)
+				data->img.addr[y * WINDOW_WIDTH + x] = 0x000000;
+			j++;
+		}
+		i++;
+	}
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils 2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:21:18 by lanani-f          #+#    #+#             */
-/*   Updated: 2025/01/08 14:44:10 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/08 22:50:32 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int	check_xpm_extension(char *path)
 // 	return (width1 == width2 && height1 == height2);
 // }
 
-int check_texture_size(t_texture *texture1, t_texture *texture2)
+int	check_texture_size(t_texture *texture1, t_texture *texture2)
 {
-    return (texture1->width == texture2->width && 
-        	texture1->height == texture2->height);
+	return (texture1->width == texture2->width
+		&& texture1->height == texture2->height);
 }

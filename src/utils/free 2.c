@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free 2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:47:43 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/08 11:58:02 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/08 22:50:51 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ void	free_textures(t_data *data)
 }
 
 // ajout
-void free_texture(t_data *data, t_texture **texture)
+void	free_texture(t_data *data, t_texture **texture)
 {
-    if (*texture)
-    {
-        if ((*texture)->img)
-            mlx_destroy_image(data->mlx, (*texture)->img);
-        free(*texture);
-        *texture = NULL;
-    }
+	if (*texture)
+	{
+		if ((*texture)->img)
+			mlx_destroy_image(data->mlx, (*texture)->img);
+		free(*texture);
+		*texture = NULL;
+	}
 }
 
 void	free_map(t_data *data)

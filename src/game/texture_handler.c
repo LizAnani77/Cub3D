@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:12:58 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/08 11:41:47 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/08 22:52:13 by lizzieanani      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,22 @@
 // 	return (0);
 // }
 
-int    load_texture(t_data *data, t_texture **texture, char *path)
+int	load_texture(t_data *data, t_texture **texture, char *path)
 {
-    *texture = malloc(sizeof(t_texture));
-    if (!*texture)
-        return (1);
-    
-    (*texture)->img = mlx_xpm_file_to_image(data->mlx, path, 
-                                           &(*texture)->width, 
-                                           &(*texture)->height);
-    if (!(*texture)->img)
-    {
-        free(*texture);
-        return (1);
-    }
-    (*texture)->addr = mlx_get_data_addr((*texture)->img, 
-                                        &(*texture)->bits_per_pixel,
-                                        &(*texture)->line_length,
-                                        &(*texture)->endian);
-    return (0);
+	*texture = malloc(sizeof(t_texture));
+	if (!*texture)
+		return (1);
+	(*texture)->img = mlx_xpm_file_to_image(data->mlx, path, &(*texture)->width,
+			&(*texture)->height);
+	if (!(*texture)->img)
+	{
+		free(*texture);
+		return (1);
+	}
+	(*texture)->addr = mlx_get_data_addr((*texture)->img,
+			&(*texture)->bits_per_pixel, &(*texture)->line_length,
+			&(*texture)->endian);
+	return (0);
 }
 
 int	init_textures(t_data *data)
@@ -57,15 +54,15 @@ int	init_textures(t_data *data)
 	return (0);
 }
 
-int get_tex_color(t_texture *texture, int tex_x, int tex_y)
+int	get_tex_color(t_texture *texture, int tex_x, int tex_y)
 {
-    char    *pixel;
-    int     color;
+	char	*pixel;
+	int		color;
 
-    pixel = texture->addr + (tex_y * texture->line_length + 
-            tex_x * (texture->bits_per_pixel / 8));
-    color = *(unsigned int *)pixel;
-    return (color);
+	pixel = texture->addr + (tex_y * texture->line_length + tex_x
+			* (texture->bits_per_pixel / 8));
+	color = *(unsigned int *)pixel;
+	return (color);
 }
 
 int	get_wall_texture(t_data *data, t_ray *ray)
@@ -101,23 +98,19 @@ int	get_wall_texture(t_data *data, t_ray *ray)
 // 	return (tex_x);
 // }
 
-
-int get_tex_x(t_texture *texture, t_ray *ray)
+int	get_tex_x(t_texture *texture, t_ray *ray)
 {
-    double wall_x;
-    int    tex_x;
-    
-    if (ray->side == 0)
-        wall_x = ray->pos_y + ray->wall_dist * ray->ray_dir_y;
-    else
-        wall_x = ray->pos_x + ray->wall_dist * ray->ray_dir_x;
-    
-    wall_x -= floor(wall_x);
-    tex_x = (int)(wall_x * texture->width);
-    
-    if ((ray->side == 0 && ray->ray_dir_x > 0)
-        || (ray->side == 1 && ray->ray_dir_y < 0))
-        tex_x = texture->width - tex_x - 1;
-    
-    return (tex_x);
+	double  wall_x;
+	int tex_x;
+
+	if (ray->side == 0)
+		wall_x = ray->pos_y + ray->wall_dist * ray->ray_dir_y;
+	else
+		wall_x = ray->pos_x + ray->wall_dist * ray->ray_dir_x;
+	wall_x -= floor(wall_x);
+	tex_x = (int)(wall_x * texture->width);
+	if ((ray->side == 0 && ray->ray_dir_x > 0) || (ray->side == 1
+			&& ray->ray_dir_y < 0))
+		tex_x = texture->width - tex_x - 1;
+	return (tex_x);
 }
