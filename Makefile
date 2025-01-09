@@ -6,7 +6,7 @@
 #    By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 13:08:55 by lanani-f          #+#    #+#              #
-#    Updated: 2025/01/08 10:52:32 by lanani-f         ###   ########.fr        #
+#    Updated: 2025/01/09 11:10:00 by lanani-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT_LIB) $(MLX_LIB) $(OBJS)
 	@echo "$(BLUE_LIGHTER)╔═════════════════════════════════════════╗$(RESET)"
-	@echo "$(BLUE_LIGHTER)║         Compiling $(NAME)...              ║$(RESET)"
+	@echo "$(BLUE_LIGHTER)║           Compiling $(NAME)...            ║$(RESET)"
 	@$(CC) $(OBJS) $(LFLAGS) -o $(NAME)
 	@echo "$(BLUE_LIGHTER)║  $(NAME) has been created successfully!   ║$(RESET)"
 	@echo "$(BLUE_LIGHTER)╚═════════════════════════════════════════╝$(RESET)"
