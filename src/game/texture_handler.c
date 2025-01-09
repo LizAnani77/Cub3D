@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:12:58 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/08 15:42:57 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:39:28 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,18 @@ int init_textures(t_data *data)
 	return (0);
 }
 
-int get_tex_color(t_texture *texture, int tex_x, int tex_y)
+int	get_tex_color(t_texture *texture, int tex_x, int tex_y)
 {
-    char    *pixel;
-    int     color;
+	char	*pixel;
+	int		color;
 
-    pixel = texture->addr + (tex_y * texture->line_length + 
-            tex_x * (texture->bits_per_pixel / 8));
-    color = *(unsigned int *)pixel;
-    return (color);
+	pixel = texture->addr + (tex_y * texture->line_length
+			+ tex_x * (texture->bits_per_pixel / 8));
+	color = *(unsigned int *)pixel;
+	return (color);
 }
 
-int get_wall_texture(t_data *data, t_ray *ray)
+int	get_wall_texture(t_data *data, t_ray *ray)
 {
 	if (ray->side == 0)
 	{
@@ -101,22 +101,19 @@ int get_wall_texture(t_data *data, t_ray *ray)
 // 	return (tex_x);
 // }
 
-int get_tex_x(t_texture *texture, t_ray *ray)
+int	get_tex_x(t_texture *texture, t_ray *ray)
 {
-    double  wall_x;
-    int     tex_x;
-    
-    if (ray->side == 0)
-        wall_x = ray->pos_y + ray->wall_dist * ray->ray_dir_y;
-    else
-        wall_x = ray->pos_x + ray->wall_dist * ray->ray_dir_x;
-    
-    wall_x -= floor(wall_x);
-    tex_x = (int)(wall_x * texture->width);
-    
-    if ((ray->side == 0 && ray->ray_dir_x > 0)
-        || (ray->side == 1 && ray->ray_dir_y < 0))
-        tex_x = texture->width - tex_x - 1;
-    
-    return (tex_x);
+	double	wall_x;
+	int		tex_x;
+
+	if (ray->side == 0)
+		wall_x = ray->pos_y + ray->wall_dist * ray->ray_dir_y;
+	else
+		wall_x = ray->pos_x + ray->wall_dist * ray->ray_dir_x;
+	wall_x -= floor(wall_x);
+	tex_x = (int)(wall_x * texture->width);
+	if ((ray->side == 0 && ray->ray_dir_x > 0)
+		|| (ray->side == 1 && ray->ray_dir_y < 0))
+		tex_x = texture->width - tex_x - 1;
+	return (tex_x);
 }
