@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:21:18 by lanani-f          #+#    #+#             */
-/*   Updated: 2025/01/08 15:51:08 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:58:20 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ int	check_xpm_extension(char *path)
 
 int	check_texture_size(t_texture *texture1, t_texture *texture2)
 {
-	return (texture1->width == texture2->width && texture1->height == texture2->height);
+	return (texture1->width == texture2->width && texture1->height
+		== texture2->height);
 }

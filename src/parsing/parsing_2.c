@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
+/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:02:34 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/06 18:06:50 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/09 11:57:50 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 // Vérifie si tous les éléments nécessaires sont présents
 int	check_required_elements(t_data *data)
 {
-	return (data->n_t && data->s_t && data->w_t && data->e_t && data->f_color != -1 && data->c_color != -1);
+	return (data->n_t && data->s_t && data->w_t && data->e_t
+		&& data->f_color != -1 && data->c_color != -1);
 }
 
 // Fonction principale de parsing
