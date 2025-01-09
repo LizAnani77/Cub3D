@@ -6,7 +6,7 @@
 #    By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 13:08:55 by lanani-f          #+#    #+#              #
-#    Updated: 2025/01/09 11:10:00 by lanani-f         ###   ########.fr        #
+#    Updated: 2025/01/09 14:52:01 by lanani-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ MAP_DIR		= $(SRC_PATH)map/
 CTRL_DIR	= $(SRC_PATH)controls/
 
 # Source files
-PARSING_FILES = parsing_1.c parsing_2.c utils_parsing.c parse_map.c texture_utils.c
+PARSING_FILES = parsing_1.c parsing_2.c utils_parsing.c parse_map.c texture_utils_1.c texture_utils_2.c
 
 GAME_FILES = game_init.c game_loop.c texture_handler.c
 

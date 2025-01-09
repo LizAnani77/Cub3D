@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:14:56 by fzayani           #+#    #+#             */
-/*   Updated: 2025/01/08 15:06:59 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:08:02 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,9 +225,12 @@ int				check_texture_size(t_texture *texture1, t_texture *texture2);
 int				parse_map(int fd, char *first_line, t_data *data);
 int				init_map(t_data *data, int fd, char *first_line);
 
-/* texture_utils.c */
+/* texture_utils_1.c */
 int				validate_textures(t_data *data);
 int				get_texture_color(t_data *data, t_ray *ray, int y);
+void			check_texture_paths(t_data *data);
+
+/* texture_utils_2.c */
 int				load_all_textures(t_data *data);
 void			*get_wall_texture_ptr(t_data *data, t_ray *ray);
 
@@ -241,13 +244,13 @@ void			exit_with_error(char *message, t_data *data);
 /* free.c */
 void			free_texture_paths(t_data *data);
 void			free_textures(t_data *data);
-void			free_texture(t_data *data, t_texture **texture);
 void			free_map(t_data *data);
 void			free_mlx(t_data *data);
 void			free_resources(t_data *data);
 
 /* clean.c */
 // void			free_resources(t_data *data); //en attente de fusion
+void			free_texture(t_data *data, t_texture **texture);
 void			free_textures_bis(t_data *data);
 void			free_map_array(char **map, int height);
 void			free_mlx_resources(t_data *data);
@@ -256,13 +259,11 @@ void			free_mlx_resources(t_data *data);
 void			draw_player_on_map(t_data *data);
 
 /* minimap_utils */
-
 int				get_minimap_color(char map_char);
 int				is_in_minimap_bounds(t_minimap *minimap, int x, int y);
 void			clear_minimap(t_data *data, t_minimap *minimap);
 
 /* minimap.c */
-
 void			init_minimap(t_data *data);
 void			put_pixel_minimap(t_data *data, int x, int y, int color);
 void			put_minimap_pixel(t_data *data, int map_x, int map_y, int color);
