@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
+/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:03:08 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/06 17:08:55 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/09 14:29:18 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-// Vérifie l'extension du fichier .cub
 int	check_file_extension(char *filename)
 {
 	char	*ext;
@@ -23,7 +22,6 @@ int	check_file_extension(char *filename)
 	return (1);
 }
 
-// Vérifie si la ligne contient uniquement des espaces ou des tabs
 int	is_empty_line(char *line)
 {
 	int	i;
@@ -38,7 +36,6 @@ int	is_empty_line(char *line)
 	return (1);
 }
 
-// Parse les couleurs RGB (F et C)
 int	parse_color(char *str)
 {
 	char	**split;
@@ -65,14 +62,12 @@ int	parse_color(char *str)
 	return (result);
 }
 
-// Vérifie si le caractère est valide pour la map
 int	is_valid_map_char(char c)
 {
 	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
 		|| c == ' ');
 }
 
-// Vérifie si le caractère est une position de départ valide
 int	is_valid_player_char(char c)
 {
 	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');

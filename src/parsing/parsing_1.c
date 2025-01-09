@@ -6,13 +6,12 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:04:59 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/08 11:37:04 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:27:08 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-// Initialise la structure de données
 void	init_data(t_data *data)
 {
 	data->n_t = NULL;
@@ -29,7 +28,6 @@ void	init_data(t_data *data)
 	data->player.player_dir = '\0';
 }
 
-// Parse les textures (NO, SO, WE, EA)
 int	parse_texture(char *line, char **texture_path)
 {
 	char	*trimmed;
@@ -46,7 +44,6 @@ int	parse_texture(char *line, char **texture_path)
 	return (0);
 }
 
-// Parse une ligne d'identifiant
 int	parse_color_identifier(char *line, int *color, char type)
 {
 	if (*color != -1)

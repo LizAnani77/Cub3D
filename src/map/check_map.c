@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lizzieananifoli <lizzieananifoli@studen    +#+  +:+       +#+        */
+/*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:06:21 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/06 17:09:13 by lizzieanani      ###   ########.fr       */
+/*   Updated: 2025/01/09 14:26:17 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-// Vérifie si la case est entourée de murs
 static int	is_surrounded(char **map, int x, int y, int height)
 {
 	int	width;
@@ -26,7 +25,6 @@ static int	is_surrounded(char **map, int x, int y, int height)
 	return (1);
 }
 
-// Valide que la map est bien fermée
 static int	check_map_closure(t_data *data)
 {
 	int	x;
@@ -50,7 +48,6 @@ static int	check_map_closure(t_data *data)
 	return (0);
 }
 
-// Valide la position du joueur
 static int	validate_player_position(t_data *data)
 {
 	int	player_count;
@@ -80,7 +77,6 @@ static int	validate_player_position(t_data *data)
 	return (0);
 }
 
-// Valide les caractères de la map
 static int	validate_map_chars(char **map, int height)
 {
 	int	x;
@@ -101,7 +97,6 @@ static int	validate_map_chars(char **map, int height)
 	return (0);
 }
 
-// Fonction principale de validation de la map
 int	validate_map(t_data *data)
 {
 	if (!data->map || !data->map_height)
