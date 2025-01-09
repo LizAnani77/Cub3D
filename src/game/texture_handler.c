@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:12:58 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/09 11:39:28 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:54:34 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,27 @@
 // 	return (0);
 // }
 
-int load_texture(t_data *data, t_texture **texture, char *path)
+int	load_texture(t_data *data, t_texture **texture, char *path)
 {
-    *texture = malloc(sizeof(t_texture));
-    if (!*texture)
-        return (1);
-    
-    (*texture)->img = mlx_xpm_file_to_image(data->mlx, path, 
-                                           &(*texture)->width, 
-                                           &(*texture)->height);
-    if (!(*texture)->img)
-    {
-        free(*texture);
-        return (1);
-    }
-    (*texture)->addr = mlx_get_data_addr((*texture)->img, 
-                                        &(*texture)->bits_per_pixel,
-                                        &(*texture)->line_length,
-                                        &(*texture)->endian);
-    return (0);
+	*texture = malloc(sizeof(t_texture));
+	if (!*texture)
+		return (1);
+	(*texture)->img = mlx_xpm_file_to_image(data->mlx, path,
+			&(*texture)->width,
+			&(*texture)->height);
+	if (!(*texture)->img)
+	{
+		free(*texture);
+		return (1);
+	}
+	(*texture)->addr = mlx_get_data_addr((*texture)->img,
+			&(*texture)->bits_per_pixel,
+			&(*texture)->line_length,
+			&(*texture)->endian);
+	return (0);
 }
 
-int init_textures(t_data *data)
+int	init_textures(t_data *data)
 {
 	if (load_texture(data, &data->no_texture, data->n_t))
 		return (1);
