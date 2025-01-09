@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:37:46 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/08 11:28:59 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:21:20 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,20 @@ static void	*select_texture(t_data *data, t_ray *ray)
 // 	adjust_tex_y(&tex_y, tex_height);
 // 	return (get_tex_color(texture, tex_x, tex_y));
 // }
-int get_texture_color(t_data *data, t_ray *ray, int y)
+int	get_texture_color(t_data *data, t_ray *ray, int y)
 {
-    int         tex_x;
-    int         tex_y;
-    t_texture   *texture;
-    double      step;
-
-    texture = select_texture(data, ray);
-    tex_x = get_tex_x(texture, ray);
-    step = 1.0 * texture->height / ray->line_height;
-    tex_y = (int)((y - ray->draw_start) * step);
-    adjust_tex_y(&tex_y, texture->height);
-    return (get_tex_color(texture, tex_x, tex_y));
+	int			tex_x;
+	int			tex_y;
+	t_texture	*texture;
+	double		step;
+	
+	texture = select_texture(data, ray);
+	tex_x = get_tex_x(texture, ray);
+	step = 1.0 * texture->height / ray->line_height;
+	tex_y = (int)((y - ray->draw_start) * step);
+	adjust_tex_y(&tex_y, texture->height);
+	return (get_tex_color(texture, tex_x, tex_y));
 }
-
 
 static void	check_texture_paths(t_data *data)
 {

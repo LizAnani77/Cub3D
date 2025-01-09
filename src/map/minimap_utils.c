@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 01:10:53 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/08 14:57:04 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:25:03 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void clear_minimap(t_data *data, t_minimap *minimap)
     int j;
     int x;
     int y;
-
+    
     i = 0;
     while (i < minimap->height)
     {
