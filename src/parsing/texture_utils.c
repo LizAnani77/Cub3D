@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:37:46 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/09 11:21:20 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:33:22 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	get_texture_color(t_data *data, t_ray *ray, int y)
 	int			tex_y;
 	t_texture	*texture;
 	double		step;
-	
+
 	texture = select_texture(data, ray);
 	tex_x = get_tex_x(texture, ray);
 	step = 1.0 * texture->height / ray->line_height;
