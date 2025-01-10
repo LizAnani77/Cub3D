@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:06:21 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/09 14:26:17 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:32:25 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,53 +48,111 @@ static int	check_map_closure(t_data *data)
 	return (0);
 }
 
-static int	validate_player_position(t_data *data)
-{
-	int	player_count;
-	int	x;
-	int	y;
+// static int	validate_player_position(t_data *data)
+// {
+// 	int	player_count;
+// 	int	x;
+// 	int	y;
 
-	player_count = 0;
-	y = 0;
-	while (y < data->map_height)
-	{
-		x = 0;
-		while (data->map[y][x])
-		{
-			if (is_valid_player_char(data->map[y][x]))
-			{
-				player_count++;
-				data->player.pos_x = x;
-				data->player.pos_y = y;
-				data->player.player_dir = data->map[y][x];
-			}
-			x++;
-		}
-		y++;
-	}
-	if (player_count != 1)
-		return (error_msg("Il doit y avoir exactement une position de départ"));
-	return (0);
+// 	player_count = 0;
+// 	y = 0;
+// 	while (y < data->map_height)
+// 	{
+// 		x = 0;
+// 		while (data->map[y][x])
+// 		{
+// 			if (is_valid_player_char(data->map[y][x]))
+// 			{
+// 				player_count++;
+// 				data->player.pos_x = x;
+// 				data->player.pos_y = y;
+// 				data->player.player_dir = data->map[y][x];
+// 			}
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	if (player_count != 1)
+// 		return (error_msg("Il doit y avoir exactement une position de départ"));
+// 	return (0);
+// }
+
+static int validate_player_position(t_data *data)
+{
+    int player_count;
+    int x;
+    int y;
+
+    player_count = 0;
+    y = 0;
+    printf("Checking for player position in map with height: %d\n", data->map_height);
+    while (y < data->map_height)
+    {
+        x = 0;
+        printf("Checking line %d: '%s'\n", y, data->map[y]);
+        while (data->map[y][x])
+        {
+            if (is_valid_player_char(data->map[y][x]))
+            {
+                printf("Found player '%c' at position [%d][%d]\n", data->map[y][x], y, x);
+                player_count++;
+                data->player.pos_x = x;
+                data->player.pos_y = y;
+                data->player.player_dir = data->map[y][x];
+            }
+            x++;
+        }
+        y++;
+    }
+    printf("Total players found: %d\n", player_count);
+    if (player_count != 1)
+        return (error_msg("Il doit y avoir exactement une position de départ"));
+    return (0);
 }
 
-static int	validate_map_chars(char **map, int height)
-{
-	int	x;
-	int	y;
 
-	y = 0;
-	while (y < height)
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (!is_valid_map_char(map[y][x]))
-				return (error_msg("Caractère invalide dans la map"));
-			x++;
-		}
-		y++;
-	}
-	return (0);
+// static int	validate_map_chars(char **map, int height)
+// {
+// 	int	x;
+// 	int	y;
+
+// 	y = 0;
+// 	while (y < height)
+// 	{
+// 		x = 0;
+// 		while (map[y][x])
+// 		{
+// 			if (!is_valid_map_char(map[y][x]))
+// 				return (error_msg("Caractère invalide dans la map"));
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	return (0);
+// }
+
+static int  validate_map_chars(char **map, int height)
+{
+    int x;
+    int y;
+
+    y = 0;
+    while (y < height)
+    {
+        x = 0;
+        while (map[y][x])
+        {
+            printf("Checking char '%c' at position [%d][%d]\n", map[y][x], y, x);
+            if (!is_valid_map_char(map[y][x]))
+            {
+                printf("Invalid char '%c' found at [%d][%d]\n", map[y][x], y, x);
+                return (error_msg("Caractère invalide dans la map"));
+            }
+            x++;
+        }
+        y++;
+    }
+    return (0);
 }
 
 int	validate_map(t_data *data)

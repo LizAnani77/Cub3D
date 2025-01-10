@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:21:18 by lanani-f          #+#    #+#             */
-/*   Updated: 2025/01/09 11:58:20 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:11:02 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,6 @@ int	check_xpm_extension(char *path)
 		return (0);
 	return (1);
 }
-
-// int	check_texture_size(void *texture1, void *texture2)
-// {
-// 	int	width1;
-// 	int	height1;
-// 	int	width2;
-// 	int	height2;
-
-// 	mlx_get_image_size(texture1, &width1, &height1);
-// 	mlx_get_image_size(texture2, &width2, &height2);
-// 	return (width1 == width2 && height1 == height2);
-// }
 
 int	check_texture_size(t_texture *texture1, t_texture *texture2)
 {

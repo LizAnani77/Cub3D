@@ -6,30 +6,53 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:12:58 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/09 14:25:45 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:23:00 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-int	load_texture(t_data *data, t_texture **texture, char *path)
+// int	load_texture(t_data *data, t_texture **texture, char *path)
+// {
+// 	*texture = malloc(sizeof(t_texture));
+// 	if (!*texture)
+// 		return (1);
+// 	(*texture)->img = mlx_xpm_file_to_image(data->mlx, path, &(*texture)->width,
+// 			&(*texture)->height);
+// 	if (!(*texture)->img)
+// 	{
+// 		free(*texture);
+// 		return (1);
+// 	}
+// 	(*texture)->addr = mlx_get_data_addr((*texture)->img,
+// 			&(*texture)->bits_per_pixel, &(*texture)->line_length,
+// 			&(*texture)->endian);
+// 	return (0);
+// }
+
+
+int load_texture(t_data *data, t_texture **texture, char *path)
 {
-	*texture = malloc(sizeof(t_texture));
-	if (!*texture)
-		return (1);
-	(*texture)->img = mlx_xpm_file_to_image(data->mlx, path,
-			&(*texture)->width,
-			&(*texture)->height);
-	if (!(*texture)->img)
-	{
-		free(*texture);
-		return (1);
-	}
-	(*texture)->addr = mlx_get_data_addr((*texture)->img,
-			&(*texture)->bits_per_pixel,
-			&(*texture)->line_length,
-			&(*texture)->endian);
-	return (0);
+    printf("Loading texture from path: %s\n", path);
+    *texture = malloc(sizeof(t_texture));
+    if (!texture)
+    {
+        printf("Failed to allocate texture structure\n");
+        return (1);
+    }
+    (*texture)->img = mlx_xpm_file_to_image(data->mlx, path, &(*texture)->width,
+            &(*texture)->height);
+    if (!(*texture)->img)
+    {
+        printf("Failed to load texture image: %s\n", path);
+        free(*texture);
+        return (1);
+    }
+    (*texture)->addr = mlx_get_data_addr((*texture)->img,
+            &(*texture)->bits_per_pixel, &(*texture)->line_length,
+            &(*texture)->endian);
+    printf("Successfully loaded texture: %s\n", path);
+    return (0);
 }
 
 int	init_textures(t_data *data)
@@ -50,8 +73,8 @@ int	get_tex_color(t_texture *texture, int tex_x, int tex_y)
 	char	*pixel;
 	int		color;
 
-	pixel = texture->addr + (tex_y * texture->line_length
-			+ tex_x * (texture->bits_per_pixel / 8));
+	pixel = texture->addr + (tex_y * texture->line_length + tex_x
+			* (texture->bits_per_pixel / 8));
 	color = *(unsigned int *)pixel;
 	return (color);
 }
@@ -80,8 +103,8 @@ int	get_tex_x(t_texture *texture, t_ray *ray)
 		wall_x = ray->pos_x + ray->wall_dist * ray->ray_dir_x;
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * texture->width);
-	if ((ray->side == 0 && ray->ray_dir_x > 0)
-		|| (ray->side == 1 && ray->ray_dir_y < 0))
+	if ((ray->side == 0 && ray->ray_dir_x > 0) || (ray->side == 1
+			&& ray->ray_dir_y < 0))
 		tex_x = texture->width - tex_x - 1;
 	return (tex_x);
 }
