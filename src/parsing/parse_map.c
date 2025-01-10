@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:21:18 by lanani-f          #+#    #+#             */
-/*   Updated: 2025/01/10 14:41:09 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:00:55 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@
 //     data->map = malloc(sizeof(char *) * (max_lines + 1));
 //     if (!data->map)
 //         return (error_msg("Erreur d'allocation de la map"));
-    
+
 //     data->map_height = 0;
-    
+
 //     // Copie de la première ligne
 //     if (first_line && !is_empty_line(first_line))
 //     {
@@ -128,7 +128,7 @@
 //         line = get_next_line(fd);
 //     }
 //     data->map[data->map_height] = NULL;
-    
+
 //     return (0);
 // }
 
@@ -144,60 +144,53 @@
 // 	return (0);
 // }
 
-
 #include "../include/cub3D.h"
 
-int init_map(t_data *data, int fd, char *first_line)
+int	init_map(t_data *data, int fd, char *first_line)
 {
-    char    *line;
-    int     max_lines;
+	char	*line;
+	int		max_lines;
 
-    max_lines = 100;  // ou une autre valeur raisonnable
-    data->map = malloc(sizeof(char *) * (max_lines + 1));
-    if (!data->map)
-        return (error_msg("Erreur d'allocation de la map"));
-    
-    data->map_height = 0;
-    
-    // Copie de la première ligne
-    if (first_line && !is_empty_line(first_line))
-    {
-        data->map[data->map_height] = ft_strdup(first_line);
-        if (!data->map[data->map_height])
-            return (error_msg("Erreur de copie de ligne"));
-        data->map_height++;
-    }
-
-    // Lecture des lignes suivantes
-    line = get_next_line(fd);
-    while (line && data->map_height < max_lines)
-    {
-        if (!is_empty_line(line))
-        {
-            data->map[data->map_height] = ft_strdup(line);
-            if (!data->map[data->map_height])
-            {
-                free(line);
-                return (error_msg("Erreur de copie de ligne"));
-            }
-            data->map_height++;
-        }
-        free(line);
-        line = get_next_line(fd);
-    }
-    data->map[data->map_height] = NULL;
-    
-    return (0);
+	max_lines = 100;
+	data->map = malloc(sizeof(char *) * (max_lines + 1));
+	if (!data->map)
+		return (error_msg("Erreur d'allocation de la map"));
+	data->map_height = 0;
+	if (first_line && !is_empty_line(first_line))
+	{
+		data->map[data->map_height] = ft_strdup(first_line);
+		if (!data->map[data->map_height])
+			return (error_msg("Erreur de copie de ligne"));
+		data->map_height++;
+	}
+	line = get_next_line(fd);
+	while (line && data->map_height < max_lines)
+	{
+		if (!is_empty_line(line))
+		{
+			data->map[data->map_height] = ft_strdup(line);
+			if (!data->map[data->map_height])
+			{
+				free(line);
+				return (error_msg("Erreur de copie de ligne"));
+			}
+			data->map_height++;
+		}
+		free(line);
+		line = get_next_line(fd);
+	}
+	data->map[data->map_height] = NULL;
+	return (0);
 }
 
-int parse_map(int fd, char *first_line, t_data *data)
+int	parse_map(int fd, char *first_line, t_data *data)
 {
-    if (init_map(data, fd, first_line))
-        return (1);
-    data->map_width = get_max_line_length(data->map);
-    data->copie_map = malloc(sizeof(char *) * (data->map_height + 1));
-    if (!data->copie_map)
-        return (error_msg("Erreur d'allocation de la copie de la map"));
-    data->copie_map[data->map_height] = NULL;
-    return (0);
+	if (init_map(data, fd, first_line))
+		return (1);
+	data->map_width = get_max_line_length(data->map);
+	data->copie_map = malloc(sizeof(char *) * (data->map_height + 1));
+	if (!data->copie_map)
+		return (error_msg("Erreur d'allocation de la copie de la map"));
+	data->copie_map[data->map_height] = NULL;
+	return (0);
 }

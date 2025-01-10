@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:42:52 by lanani-f          #+#    #+#             */
-/*   Updated: 2025/01/10 15:28:16 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:03:01 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 // 	return (0);
 // }
 
-
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -48,11 +47,11 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	if (init_game(&data))
-{
-    printf("Game initialization failed\n");
-    free_resources(&data);
-    return (1);
-}
+	{
+		printf("Game initialization failed\n");
+		free_resources(&data);
+		return (1);
+	}
 	printf("Game initialized successfully, starting main loop...\n");
 	mlx_loop(data.mlx);
 	free_resources(&data);

@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:14:08 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/10 15:19:37 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:02:06 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ void	init_image(t_data *data)
 // 	return (0);
 // }
 
-int init_game(t_data *data)
+int	init_game(t_data *data)
 {
-    printf("Starting game initialization...\n");
-    init_window(data);
-    printf("Window initialized...\n");
-    init_image(data);
-    printf("Image initialized...\n");
-    if (init_textures(data))
-        return (1);
-    printf("Textures initialized...\n");
-    init_hooks(data);
-    printf("Hooks initialized...\n");
-    return (0);
+	printf("Starting game initialization...\n");
+	init_window(data);
+	printf("Window initialized...\n");
+	init_image(data);
+	printf("Image initialized...\n");
+	if (init_textures(data))
+		return (1);
+	printf("Textures initialized...\n");
+	init_hooks(data);
+	printf("Hooks initialized...\n");
+	return (0);
 }
 
 void	put_pixel(t_data *data, int x, int y, int color)

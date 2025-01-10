@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:02:34 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/09 16:47:29 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:59:19 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	check_required_elements(t_data *data)
 {
-	return (data->n_t && data->s_t && data->w_t && data->e_t && data->f_color !=
-		-1 && data->c_color != -1);
+	return (data->n_t && data->s_t && data->w_t && data->e_t && data->f_color
+		!= -1 && data->c_color != -1);
 }
 
 int	process_valid_line(char *line, t_data *data, int fd)

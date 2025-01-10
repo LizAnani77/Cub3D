@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:03:08 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/10 14:25:36 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:57:40 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int	parse_color(char *str)
 // 		|| c == ' ');
 // }
 
-int is_valid_map_char(char c)
+int	is_valid_map_char(char c)
 {
-    return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
-        || c == ' ' || c == '\n');
+	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
+		|| c == ' ' || c == '\n');
 }
 
 int	is_valid_player_char(char c)
