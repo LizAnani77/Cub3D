@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:14:08 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/13 13:42:26 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:24:03 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,33 +57,32 @@ void	init_image(t_data *data)
 // 	return (0);
 // }
 
-
-int init_game(t_data *data)
+int	init_game(t_data *data)
 {
-    printf("Starting game initialization...\n");
-    if (!data->n_t || !data->s_t || !data->w_t || !data->e_t)
-    {
-        printf("Error: texture paths not properly initialized\n");
-        return (1);
-    }
-    init_window(data);
-    if (!data->mlx || !data->win)
-    {
-        printf("Error: failed to initialize window\n");
-        return (1);
-    }
-    printf("Window initialized...\n");
-    init_image(data);
-    printf("Image initialized...\n");
-    if (init_textures(data))
-    {
-        printf("Error: failed to initialize textures\n");
-        return (1);
-    }
-    printf("Textures initialized...\n");
-    init_hooks(data);
-    printf("Hooks initialized...\n");
-    return (0);
+	printf("Starting game initialization...\n");
+	if (!data->n_t || !data->s_t || !data->w_t || !data->e_t)
+	{
+		printf("Error: texture paths not properly initialized\n");
+		return (1);
+	}
+	init_window(data);
+	if (!data->mlx || !data->win)
+	{
+		printf("Error: failed to initialize window\n");
+		return (1);
+	}
+	printf("Window initialized...\n");
+	init_image(data);
+	printf("Image initialized...\n");
+	if (init_textures(data))
+	{
+		printf("Error: failed to initialize textures\n");
+		return (1);
+	}
+	printf("Textures initialized...\n");
+	init_hooks(data);
+	printf("Hooks initialized...\n");
+	return (0);
 }
 
 void	put_pixel(t_data *data, int x, int y, int color)

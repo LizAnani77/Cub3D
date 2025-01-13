@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:42:17 by lanani-f          #+#    #+#             */
-/*   Updated: 2025/01/13 13:21:16 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:27:29 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 // 		return (1);
 // 	return (0);
 // }
-
-
 
 void	*get_wall_texture_ptr(t_data *data, t_ray *ray)
 {

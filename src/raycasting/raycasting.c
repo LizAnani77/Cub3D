@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 19:56:03 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/13 14:21:48 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:26:53 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ void	init_player_pos(t_ray *ray, t_data *data)
 	ray->pos_x = (double)data->player.pos_x + 0.5;
 	ray->pos_y = (double)data->player.pos_y + 0.5;
 	set_direction_vectors(ray, data->player.player_dir);
-	    // Synchroniser avec data->player
-    data->player.dir_x = ray->dir_x;
-    data->player.dir_y = ray->dir_y;
-    data->player.plane_x = ray->plane_x;
-    data->player.plane_y = ray->plane_y;
-	
+	data->player.dir_x = ray->dir_x;
+	data->player.dir_y = ray->dir_y;
+	data->player.plane_x = ray->plane_x;
+	data->player.plane_y = ray->plane_y;
 	data->movement.move_speed = 0.05;
 	data->movement.rot_speed = 0.03;
 	data->movement.forward = 0;

@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 20:33:49 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/13 14:22:49 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:23:53 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,10 @@ void	handle_forward_movement(t_data *data)
 {
 	double	new_x;
 	double	new_y;
-	
-	printf("Forward: %d, Backward: %d\n", 
-           data->movement.forward, 
-           data->movement.backward);
-    printf("Player pos: (%f, %f)\n", 
-           data->player.pos_x, 
-           data->player.pos_y);
 
-		   
+	printf("Forward: %d, Backward: %d\n", data->movement.forward,
+		data->movement.backward);
+	printf("Player pos: (%f, %f)\n", data->player.pos_x, data->player.pos_y);
 	if (data->movement.forward)
 	{
 		new_x = data->player.pos_x + data->player.dir_x
