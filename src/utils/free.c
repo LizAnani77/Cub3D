@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:47:43 by lizzieanani       #+#    #+#             */
-/*   Updated: 2025/01/09 14:38:55 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/13 11:40:16 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,52 @@ void	free_texture_paths(t_data *data)
 	data->e_t = NULL;
 }
 
-void	free_textures(t_data *data)
+// void	free_textures(t_data *data)
+// {
+// 	if (data->no_texture)
+// 		mlx_destroy_image(data->mlx, data->no_texture);
+// 	if (data->so_texture)
+// 		mlx_destroy_image(data->mlx, data->so_texture);
+// 	if (data->we_texture)
+// 		mlx_destroy_image(data->mlx, data->we_texture);
+// 	if (data->ea_texture)
+// 		mlx_destroy_image(data->mlx, data->ea_texture);
+// 	data->no_texture = NULL;
+// 	data->so_texture = NULL;
+// 	data->we_texture = NULL;
+// 	data->ea_texture = NULL;
+// }
+
+void free_textures(t_data *data)
 {
-	if (data->no_texture)
-		mlx_destroy_image(data->mlx, data->no_texture);
-	if (data->so_texture)
-		mlx_destroy_image(data->mlx, data->so_texture);
-	if (data->we_texture)
-		mlx_destroy_image(data->mlx, data->we_texture);
-	if (data->ea_texture)
-		mlx_destroy_image(data->mlx, data->ea_texture);
-	data->no_texture = NULL;
-	data->so_texture = NULL;
-	data->we_texture = NULL;
-	data->ea_texture = NULL;
+    if (data->no_texture)
+    {
+        if (data->no_texture->img)
+            mlx_destroy_image(data->mlx, data->no_texture->img);
+        free(data->no_texture);
+        data->no_texture = NULL;
+    }
+    if (data->so_texture)
+    {
+        if (data->so_texture->img)
+            mlx_destroy_image(data->mlx, data->so_texture->img);
+        free(data->so_texture);
+        data->so_texture = NULL;
+    }
+    if (data->we_texture)
+    {
+        if (data->we_texture->img)
+            mlx_destroy_image(data->mlx, data->we_texture->img);
+        free(data->we_texture);
+        data->we_texture = NULL;
+    }
+    if (data->ea_texture)
+    {
+        if (data->ea_texture->img)
+            mlx_destroy_image(data->mlx, data->ea_texture->img);
+        free(data->ea_texture);
+        data->ea_texture = NULL;
+    }
 }
 
 void	free_map(t_data *data)

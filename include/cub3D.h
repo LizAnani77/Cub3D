@@ -6,7 +6,7 @@
 /*   By: lanani-f <lanani-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:14:56 by fzayani           #+#    #+#             */
-/*   Updated: 2025/01/09 15:08:02 by lanani-f         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:22:18 by lanani-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,8 @@ int				validate_map(t_data *data);
 
 /* texture_handler.c */
 // int				load_texture(t_data *data, void **texture, char *path);
-int				load_texture(t_data *data, t_texture **texture, char *path);
+// int				load_texture(t_data *data, t_texture **texture, char *path);
+int				load_all_texture(t_data *data);
 int				init_textures(t_data *data);
 // int				get_tex_color(void *texture, int x, int y);
 int				get_tex_color(t_texture *texture, int tex_x, int tex_y);
@@ -225,13 +226,13 @@ int				check_texture_size(t_texture *texture1, t_texture *texture2);
 int				parse_map(int fd, char *first_line, t_data *data);
 int				init_map(t_data *data, int fd, char *first_line);
 
-/* texture_utils_1.c */
+/* texure_utils_1.c */
 int				validate_textures(t_data *data);
 int				get_texture_color(t_data *data, t_ray *ray, int y);
 void			check_texture_paths(t_data *data);
 
 /* texture_utils_2.c */
-int				load_all_textures(t_data *data);
+// int				load_all_textures(t_data *data);
 void			*get_wall_texture_ptr(t_data *data, t_ray *ray);
 
 /* errors.c */
